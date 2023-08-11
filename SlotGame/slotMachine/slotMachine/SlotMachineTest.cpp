@@ -21,10 +21,11 @@ void spinOne();
 void spinTwo();
 void spinThree();
 void spinFour();
+void spin(int);
 //bool IsNumber;
 using namespace std;
 
-bool IsNumber(string W) 
+bool IsNumber(string W)
 {
 	for (int i = 0; i < W.length(); i++)
 	{
@@ -58,7 +59,7 @@ void menuCredits()
 				//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
 				WhileNotANumber = true;
 			}
-			else 
+			else
 			{
 				// 제대로 된 숫자가 입력이 안되면 여기를 계속 수행
 				std::cin.clear();
@@ -72,28 +73,32 @@ void menuCredits()
 			system("cls");
 			correctChoice = true;
 			credits -= 50;
-			spinOne();
+			//spinOne();
+			spin(50);
 			//PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
 			break;
 		case 2:
 			system("cls");
 			correctChoice = true;
 			credits -= 100;
-			spinTwo();
+			spin(100);
+			//spinTwo();
 			//PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
 			break;
 		case 3:
 			system("cls");
 			correctChoice = true;
 			credits -= 150;
-			spinThree();
+			spin(150);
+			//spinThree();
 			//PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
 			break;
 		case 4:
 			system("cls");
 			correctChoice = true;
 			credits -= 200;
-			spinFour();
+			spin(200);
+			//spinFour();
 			//PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
 			break;
 		default:
@@ -142,6 +147,232 @@ void insertCredits()
 		}
 	}
 }
+
+void spin(int num)
+{
+	bool Play = true;
+	std::mt19937 generator(std::random_device{}());
+	std::mt19937 generator2(std::random_device{}());
+	std::mt19937 generator3(std::random_device{}());
+	std::uniform_int_distribution<std::size_t> distribution(0, LReel.size() - 1);
+	std::uniform_int_distribution<std::size_t> distribution2(0, CReel.size() - 1);
+	std::uniform_int_distribution<std::size_t> distribution3(0, RReel.size() - 1);
+	// 완전한 랜덤화를 위해서 이렇게 진행
+	//방식은 한번 더 알아볼 필요가 존재함
+
+	do
+	{
+		cout << "당신의 크레딧은 현재 " << credits << "개 입니다." << endl;
+		if (credits -= num)
+		{
+			//bool SlotWin1 = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+		}
+		int mini = rand() % 101;
+		int minor = rand() % 151;
+		int major = rand() % 201;
+		cout << "미니 보너스 카운트는 " << mini << endl;
+		cout << "마이너 보너스 카운트는 " << minor << endl;
+		cout << "메이저 보너스 카운트는 " << major << endl;
+		if (mini >= 100)
+		{
+			cout << "미니 보너스에 당첨되셨습니다!!!" << endl;
+			cout << "당첨 보상으로 크레딧 10000개를 획득하셨습니다!" << endl;
+			//bool BigSlotWin = PlaySound(TEXT("BigWinSlotMachineSound.wav"), NULL, SND_ASYNC);
+			credits += 10000;
+			cout << "현재 크레딧의 갯수는 " << credits << "개 입니다." << endl;
+		}
+		else if (minor >= 150)
+		{
+			cout << "마이너 보너스에 당첨되셨습니다!!!" << endl;
+			cout << "당첨 보상으로 크레딧 100000개를 획득하셨습니다!" << endl;
+			//bool BigSlotWin = PlaySound(TEXT("BigWinSlotMachineSound.wav"), NULL, SND_ASYNC);
+			credits += 100000;
+			cout << "현재 크레딧의 갯수는 " << credits << "개 입니다." << endl;
+		}
+		else if (major >= 200)
+		{
+			cout << "메이져 보너스에 당첨되셨습니다!!!" << endl;
+			cout << "당첨 보상으로 크레딧 1000000개를 획득하셨습니다!" << endl;
+			//bool BigSlotWin = PlaySound(TEXT("BigWinSlotMachineSound.wav"), NULL, SND_ASYNC);
+			credits += 1000000;
+			cout << "현재 크레딧의 갯수는 " << credits << "개 입니다." << endl;
+		}
+		std::size_t number = distribution(generator);
+		std::size_t number2 = distribution(generator2);
+		std::size_t number3 = distribution(generator3);
+		std::cout << LReel[number] << CReel[number2] << RReel[number3] << std::endl;
+		// 곱하기 배수의 문제가 있긴함 뒤로 갈수록 2배 3배 이렇게 하기에는 밋밋해서 해보긴함
+		int multiplication = 1;
+		switch (num) {
+		case 50:
+			multiplication = 1;
+			break;
+		case 100:
+			multiplication = 2 * 1.25;
+			break;
+		case 150:
+			multiplication = 3 * 1.25;
+			break;
+		case 200:
+			multiplication = 4 * 1.25;
+			break;
+		}
+		if (LReel[number] == 'D' && CReel[number2] == 'D' && RReel[number3] == 'D')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(75 * multiplication);
+			cout << (int)(75 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'F' && CReel[number2] == 'F' && RReel[number3] == 'F')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(10 * multiplication);;
+			cout << (int)(10 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'A' && CReel[number2] == 'A' && RReel[number3] == 'A')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(2000 * multiplication);
+			cout << (int)(2000 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'G' && CReel[number2] == 'G' && RReel[number3] == 'G')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(1750 * multiplication);
+			cout << (int)(1750 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'E' && CReel[number2] == 'E' && RReel[number3] == 'E')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(50 * multiplication);
+			cout << (int)(50 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'K' && CReel[number2] == 'K' && RReel[number3] == 'K')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(1550 * multiplication);
+			cout << (int)(1550 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'C' && CReel[number2] == 'C' && RReel[number3] == 'C')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(75 * multiplication);
+			cout << (int)(75 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'A' && CReel[number2] == 'A' && RReel[number3] == 'K')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(1500 * multiplication);
+			cout << (int)(1550 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'F' && CReel[number2] == 'F' && RReel[number3] == 'E')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += 10;
+			cout << "10개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'G' && CReel[number2] == 'G' && RReel[number3] == 'A')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(75 * multiplication);
+			cout << (int)(75 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'E' && CReel[number2] == 'E' && RReel[number3] == 'F')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(75 * multiplication);
+			cout << (int)(75 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'K' && CReel[number2] == 'K' && RReel[number3] == 'A')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(75 * multiplication);
+			cout << (int)(75 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'K' && CReel[number2] == 'K' && RReel[number3] == 'C')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(1000 * multiplication);
+			cout << (int)(1000 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+		else if (LReel[number] == 'C' && CReel[number2] == 'C' && RReel[number3] == 'D')
+		{
+			//bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			cout << "이겼습니다!!!" << endl;
+			credits += (int)(75 * multiplication);
+			cout << (int)(75 * multiplication) << "개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
+		}
+
+		if (Play)
+		{
+			bool PressedChoice = false;
+			while (!PressedChoice)
+			{
+				string yesOrNo = "";
+				cout << "다시 하시겠습니까? y/n? y나 n을 입력해주십시요" << endl;
+				cin >> yesOrNo;
+				if (!cin.fail() && (cin.peek() == EOF || cin.peek() == '\n', !IsNumber(yesOrNo), yesOrNo.size() <= 1))
+				{
+					//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+					PressedChoice = true;
+				}
+				else
+				{
+					// 그만한다 해도 다시한번 물어보는용도
+					std::cin.clear();
+					std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					std::cout << " y 혹은 n을 입력하세요" << std::endl;
+					cin >> yesOrNo;
+					if (!cin.fail() && (cin.peek() == EOF || cin.peek() == '\n', !IsNumber(yesOrNo), yesOrNo.size() <= 1))
+					{
+						//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+						PressedChoice = true;
+					}
+					if (yesOrNo == "y") {
+						Play = true;
+						//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+					}
+					else if (yesOrNo == "n")
+					{
+						Play = false;
+						PressedChoice = true;
+						//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+					}
+				}
+				if (yesOrNo == "y") {
+					Play = true;
+					//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+				}
+				else if (yesOrNo == "n")
+				{
+					Play = false;
+					PressedChoice = true;
+					//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+				}
+				if (credits <= 0)
+				{
+					cout << "크레딧이 더 없습니다!! " << endl;
+					Play = false;
+					//bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+				}
+			}
+		}
+	} while (Play);
+}
+
 void spinOne()
 {
 	bool Play = true;
@@ -175,7 +406,7 @@ void spinOne()
 			credits += 10000;
 			cout << "현재 크레딧의 갯수는 " << credits << "개 입니다." << endl;
 		}
-		else if (minor >= 150) 
+		else if (minor >= 150)
 		{
 			cout << "마이너 보너스에 당첨되셨습니다!!!" << endl;
 			cout << "당첨 보상으로 크레딧 100000개를 획득하셨습니다!" << endl;
@@ -348,7 +579,7 @@ void spinOne()
 				}
 			}
 		}
-	}while (Play);
+	} while (Play);
 }
 
 void spinTwo()
@@ -384,7 +615,7 @@ void spinTwo()
 			credits += 10000;
 			cout << "현재 크레딧의 갯수는 " << credits << "개 입니다." << endl;
 		}
-		else if (minor >= 150) 
+		else if (minor >= 150)
 		{
 			cout << "마이너 보너스에 당첨되셨습니다!!!" << endl;
 			cout << "당첨 보상으로 크레딧 100000개를 획득하셨습니다!" << endl;
@@ -434,7 +665,7 @@ void spinTwo()
 		}
 		else if (LReel[number] == 'E' && CReel[number2] == 'E' && RReel[number3] == 'E')
 		{
-		//	bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
+			//	bool SlotWin1 = PlaySound(TEXT("SlotMachineWin.wav"), NULL, SND_ASYNC);
 			cout << "이겼습니다!!!" << endl;
 			credits += 125;
 			cout << "125개를 획득하였습니다. 지금 크레딧은 " << credits << "개 입니다." << endl;
@@ -564,7 +795,7 @@ void spinTwo()
 				}
 			}
 		}
-	}while (Play);
+	} while (Play);
 }
 
 void spinThree()
@@ -964,7 +1195,7 @@ void spinFour()
 					cin >> yesOrNo;
 					if (!cin.fail() && (cin.peek() == EOF || cin.peek() == '\n', !IsNumber(yesOrNo), yesOrNo.size() <= 1))
 					{
-					//	bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
+						//	bool ButtonPress = PlaySound(TEXT("ButtonPress.wav"), NULL, SND_ASYNC);
 						PressedChoice = true;
 					}
 					if (yesOrNo == "y") {
