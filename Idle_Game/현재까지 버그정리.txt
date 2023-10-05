@@ -1,0 +1,2 @@
+1. 오프라인시 동물들이 order값이 더 높은 현상
+2. 큰팝업 적용시 밑에 bottomBar가 거슬리는 상황 (해결책 큰팝업시 bottomBar를 끄던지 ContentSize를 줄이던지)

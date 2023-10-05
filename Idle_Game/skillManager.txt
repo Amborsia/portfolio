@@ -1,0 +1,38 @@
+public void Click10()
+    {
+        GameManager gm = GameManager.GetIntance();
+        if(gm.ruby >= 1)  // 값을 갖고 있는지의 여부에 따라서 실패 혹은 성공으로 적용
+        {
+            gm.ruby -= 1;
+            PlayerPrefs.SetInt("ruby", gm.ruby);
+            gm.OriginClick();
+            StartCoroutine(ChangeClickOrigin(10));
+            click10.interactable = false;
+            click100.interactable = false;
+            PlayerPrefs.SetString("skill", "on");
+        }
+        
+    }
+
+ public IEnumerator ChangeClickOrigin(int x)
+    {
+        GameManager gm = GameManager.GetIntance();	// GameManager를 인스턴스화 시켜서 어디서든 가져다 쓸 수 있게 만듬
+        PlayerPrefs.SetString("perclick", (gm.perClick *= x).ToString());  //PlayerPrefs를 활용하여 값을 저장 혹은 불러오고 있음
+        gm.UpdateScreen();
+        
+        if (x == 10)
+        {
+            yield return new WaitForSeconds(10 + PlayerPrefs.GetInt("firstskilllv") * 0.1f); //스킬 레벨에 따른 시간 작용
+        }
+        else
+        {
+            yield return new WaitForSeconds(10 + PlayerPrefs.GetInt("thirdskilllv") * 0.1f);
+        }
+        
+        
+        PlayerPrefs.SetString("skill", "off");
+        click10.interactable = true;
+        click100.interactable = true;
+        gm.FinishClick();
+        gm.UpdateScreen();
+    }

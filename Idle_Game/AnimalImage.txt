@@ -1,0 +1,102 @@
+프리팹으로 설정되어 있는 동물 업그레이드 리스트를 엑셀에서 들고와서 관리하는 코드
+
+for(int i = 0; i< gm.isClears.Length; i++)
+        {
+            lockImage.transform.Find("open_Button").GetComponent<AnimalUpgrade>().line = i;
+
+            // 프리팹 텍스트 변경건
+            Text txt = lockImage.transform.Find("lock_Text").GetComponent<Text>();
+            txt.text = gm.animalNames[i] + " 잠김";
+
+            // 열리는 조건 표시하는 텍스트
+            Text condition = lockImage.transform.Find("lock_Condition").GetComponent<Text>();
+            if (i == 0)
+            {
+                condition.text = "(조건 : 사료 10레벨)";
+            }
+            else
+            {
+                condition.text = "(조건 : " + gm.animalNames[i - 1] + " 10레벨)";
+            }
+
+            // 조건 달성시 오픈되는 이미지
+            // 프리팹 이미지 변경건
+            Image image2 = lockImage.transform.Find("open_Animal").GetComponent<Image>();
+            image2.sprite = Resources.Load<Sprite>("baby_Image/" + gm.imageNames[i]);
+
+            // 프리팹 레벨 텍스트 변경건
+            Text txt2 = lockImage.transform.Find("open_Text").GetComponent<Text>();
+            txt2.text = gm.animalNames[i] + " \nLV" + gm.animalLvs[i];
+
+            if (isFirst)
+            {
+                // csv를 할당하고 작업이 가능할까?
+                TextAsset asset = Resources.Load<TextAsset>("csv/" + gm.imageNames[i]);
+                csvFile = asset;
+                SetDictionary(gm.animalNames[i]);
+            }
+            AnimalData[] animalDatas = this.transform.gameObject.GetComponent<ExcelManager>().GetAnimalData(gm.animalNames[i]);
+            FeedContext(animalDatas, gm.animalLvs[i]);
+	GameObject obj = Instantiate(lockImage, parent);
+	}
+
+ private void FeedContext(AnimalData[] animalDatas, int num)
+    {
+        GameManager gameManager = GameManager.GetIntance();
+        ExcelParse excelParse = ExcelParse.GetIntance();
+        foreach (var context in animalDatas[num].upgradeCost.ToString())
+        {
+
+            Text cost = lockImage.transform.Find("open_Button").transform.GetChild(0).GetComponent<Text>();
+            cost.text = gameManager.textChangeManager.CurrencyString(animalDatas[num].upgradeCost);
+            
+            Text sec = lockImage.transform.Find("open_Button").transform.GetChild(1).GetComponent<Text>();
+            sec.text = "+" + animalDatas[num].perGold.ToString() + "/초";
+        }
+    }
+
+public string UpgradeCost(AnimalData[] animalDatas, int num)
+    {
+        string returnValue = animalDatas[num].upgradeCost.ToString() + "," + animalDatas[num-1].perGold.ToString()+"," + animalDatas[num].perGold.ToString();
+        return returnValue;
+    }
+
+    public void SetDictionary(string animalName)
+    {
+        string csvText = csvFile.text.Substring(0, csvFile.text.Length - 1);
+        string[] rows = csvText.Split(new char[] { '\n' });
+        for (int i = 1; i < rows.Length; i++)
+        {
+            // rowvalues는 [순서, 업그레이드 비용, 버는골드, 누적업그레이드] 이렇게 나오는 게 될거임
+            string[] rowValues = rows[i].Split(new char[] { ',' });
+            // 유효한 이벤트 이름이 나올때까지 반복
+            if (rowValues[0].Trim() == "" || rowValues[0].Trim() == "end" || rowValues[0].Trim() == "999")
+                continue;
+
+            // list가 길이 변환이 자유롭기 때문에 이후 배열로 형 변환 진행
+            List<AnimalData> animalDataList = new List<AnimalData>();
+            // key를 eventName으로 지정
+            string eventName = animalName ;
+
+            // i를 이용하여 현재 csv 몇번째 줄을 돌고 있는지 알 수 있음
+            while (rowValues[0].Trim() != "999")
+            {
+                List<double> contextList = new List<double>();
+
+                AnimalData animalData;  // 구조체 선언
+                animalData.upgradeCost = double.Parse(rowValues[2]);  // 업그레이드 비용인 1열에 적용
+                animalData.perGold = double.Parse(rowValues[1]);     // 버는 골드가 2열이기 때문
+                animalData.number = double.Parse(rowValues[0]);
+                animalDataList.Add(animalData);
+                do // talkData 하나를 만드는 반복문
+                {
+                    contextList.Add(double.Parse(rowValues[2].ToString()));
+                    if (++i < rows.Length)
+                        rowValues = rows[i].Split(new char[] { ',' });
+                    else break;
+                } while (rowValues[1] == "" && rowValues[0] != "999");
+            }
+
+            AnimalDictionary.Add(eventName, animalDataList.ToArray());
+        }
+    }

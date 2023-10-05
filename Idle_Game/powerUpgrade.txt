@@ -1,0 +1,60 @@
+// 클릭가격을 올리는 용도의 코드 여기서도 가격을 엑셀로 관리하고 있음
+
+public void PressUpgrade()	//public인 이유는 버튼에 설정되어서 바로 적용되기 때문
+    {
+        GameManager gameManager = GameManager.GetIntance();
+        if (PlayerPrefs.HasKey("upgradecost"))
+        {
+            upgradeCost = PlayerPrefs.GetInt("upgradecost");
+        }
+        if (gameManager.currentMoney > upgradeCost)
+        {
+            // 업그레이드 계산식
+            gameManager.currentMoney -= upgradeCost;
+            PlayerPrefs.SetString("currentmoney", gameManager.currentMoney.ToString());
+            lv++;
+            currentLv.text = "LV "+lv.ToString();
+            gameManager.currentLv = lv;
+            PlayerPrefs.SetInt("lv", (int)gameManager.currentLv);
+            power += 1;
+            PlayerPrefs.SetInt("power", power);
+            gameManager.perClick += PlayerPrefs.GetInt("power");
+            PlayerPrefs.SetString("perclick", gameManager.perClick.ToString());
+            gameManager.UpdateScreen();
+            // nextCost.text = textChangeManager.CurrencyString(cost);
+            nextPower.text = (PlayerPrefs.GetInt("lv") + 1).ToString() + "/클릭";
+            gameManager.UpdateCurrentMoney();
+            gameManager.UpdatePerClick();
+
+            // csv데이터 가죠오기
+            FeedData[] feedDatas = this.transform.gameObject.GetComponent<ExcelManager>().GetObjectData();
+            FeedContext(feedDatas);
+
+            // 맨처음 클릭파워 10레벨 이상이면 첫번째 동물 잠금 열어주기
+            if(gameManager.currentLv >= 10)
+            {
+                gameManager.isClears[0] = 1;
+            }
+        }
+    }
+
+    private void FeedContext(FeedData[] feedDatas)	// 엑셀 데이터를 토대로 가격 설정
+    {
+        GameManager gameManager = GameManager.GetIntance();
+        ExcelParse excelParse = ExcelParse.GetIntance();
+        foreach (var context in feedDatas[lv-1].upgradeCost.ToString())
+        {
+            nextCost.text = feedDatas[lv-1].upgradeCost.ToString();
+            gameManager.nextCost = feedDatas[lv-1].upgradeCost;
+            PlayerPrefs.SetString("nextcost", gameManager.nextCost.ToString());
+            upgradeCost = feedDatas[lv - 1].upgradeCost;
+            PlayerPrefs.SetInt("upgradecost", (int)upgradeCost);
+        }
+        
+        if (PlayerPrefs.HasKey("nextcost"))
+        {
+            nextCost.text = textChangeManager.CurrencyString(PlayerPrefs.GetString("nextcost"));
+        }
+        
+        
+    }

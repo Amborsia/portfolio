@@ -1,0 +1,77 @@
+//동물 업그레이드 관련해서 작업된 코드
+
+ public void OnClick()
+    {
+        textChangeManager = GetComponent<TextChangeManager>();
+        GameManager gameManager = GameManager.GetIntance();
+        AnimalImage bringValue = AnimalImage.GetIntance();
+        if (PlayerPrefs.HasKey(gameManager.animalCosts[line] + "costs"))
+        {
+            gameManager.animalCosts[line] = double.Parse(PlayerPrefs.GetString(gameManager.animalCosts[line] + "costs"));
+        }
+        
+        if(gameManager.animalCosts[line] <= gameManager.currentMoney)
+        {
+            AnimalData[] animalDatas = GameObject.Find("AnimalPopUp").GetComponent<ExcelManager>().GetAnimalData(gameManager.animalNames[line]);
+            
+            PlayerPrefs.SetInt(gameManager.animalNames[line] + "open", 1);
+         
+            // 업그레이드 시 텍스트 변경
+            Text cost = this.gameObject.transform.GetChild(0).GetComponent<Text>();
+            Text sec = this.gameObject.transform.GetChild(1).GetComponent<Text>();
+
+            gameManager.currentMoney -= gameManager.animalCosts[line];
+            PlayerPrefs.SetString("currentmoney", gameManager.currentMoney.ToString());
+            gameManager.perSec += animalDatas[gameManager.animalLvs[line]].perGold;
+            PlayerPrefs.SetString("persec", gameManager.perSec.ToString());
+            gameManager.animalLvs[line] += 1;
+            if(gameManager.animalLvs[line] >= 200)
+            {
+                gameManager.grow_animals[line].gameObject.SetActive(true);
+                gameManager.baby_animals[line].gameObject.SetActive(false);
+            }
+            else
+            {
+                gameManager.grow_animals[line].gameObject.SetActive(false);
+                gameManager.baby_animals[line].gameObject.SetActive(true);
+            }
+            gameManager.animalCosts[line] = animalDatas[gameManager.animalLvs[line]].upgradeCost;
+            PlayerPrefs.SetInt(gameManager.animalNames[line] + "lv", gameManager.animalLvs[line]);
+            lv.text = gameManager.animalNames[line] + " \nLV" + gameManager.animalLvs[line];
+            cost.text = gameManager.textChangeManager.CurrencyString(animalDatas[gameManager.animalLvs[line]].upgradeCost);
+            PlayerPrefs.SetString(gameManager.animalNames[line] + "costs", animalDatas[gameManager.animalLvs[line]].upgradeCost.ToString());
+            if (animalDatas[gameManager.animalLvs[line]].number == 1)
+            {
+                sec.text = "+"+animalDatas[gameManager.animalLvs[line]].perGold.ToString() + "/초";
+            }
+            else
+            {
+                sec.text = "+" + animalDatas[gameManager.animalLvs[line]].perGold.ToString() + "/초";
+            }
+
+            // 레벨 체크한 이후 10레벨 넘으면 다음 동물 실행되게끔
+            if(gameManager.animalLvs[line] >= 10 && line != 19)
+            {
+                gameManager.isClears[line + 1] = 1;
+                PlayerPrefs.SetInt(gameManager.animalNames[line+1] + "open", 1);
+                int num = line;
+                GameObject obj = this.transform.parent.gameObject.transform.parent.gameObject;
+                for(int i = 0; i < 3; i++)
+                {
+                    obj.transform.GetChild(line + 1).gameObject.transform.GetChild(i).gameObject.SetActive(true);
+                }
+                for (int i = 3; i < 6; i++)
+                {
+                    obj.transform.GetChild(line + 1).gameObject.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+
+            gameManager.UpdateScreen();
+
+        }
+        else
+        {
+            Debug.LogError("no money");
+        }
+
+    }

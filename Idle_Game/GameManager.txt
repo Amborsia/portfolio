@@ -1,0 +1,51 @@
+오프라인 시간을 체크하는 코드
+private void TimeCheck()
+    {
+        for (int i = 0; i < animalNames.Length; i++)
+        {
+
+            if (PlayerPrefs.HasKey(animalNames[i] + "open"))
+            {
+                isClears[i] = PlayerPrefs.GetInt(animalNames[i] + "open");
+                if (animalLvs[i] >= 200)
+                {
+                    grow_animals[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    baby_animals[i].gameObject.SetActive(false);
+                }
+            }
+        }
+        DateTime current = DateTime.Now;
+        DateTime before = new DateTime(int.Parse(PlayerPrefs.GetString("year")), int.Parse(PlayerPrefs.GetString("month")), int.Parse(PlayerPrefs.GetString("day")), int.Parse(PlayerPrefs.GetString("hour")), int.Parse(PlayerPrefs.GetString("min")), int.Parse(PlayerPrefs.GetString("sec")));
+        Debug.LogError(current);
+        // PlayerPrefs를 활용하여 지속적으로 시간을 저장해뒀었음 따라서 현재 시간 - 플레이했었던 시간을 하면 몇시간의 공백이 생겼는지 알 수 있음
+        timeDiff = current - before;
+        if(timeDiff.TotalMinutes >= 1)
+        {
+            if (timeDiff.TotalMinutes >= 480)	//최대시간을 8시간으로 설정
+            {
+                num = int.Parse(PlayerPrefs.GetString("persec")) * 480 * 60;	//초당 골드이기 때문에 60을 다시 곱해줌
+            }
+            else
+            {
+                num = int.Parse(PlayerPrefs.GetString("persec")) * Math.Truncate(timeDiff.TotalMinutes) * 60;
+            }
+            // 오프라인 보상을 줘야함
+            //팝업오픈 관련 
+            double hour = 0;
+            if (timeDiff.TotalHours >= 0)
+            {
+                hour = Math.Truncate(timeDiff.TotalHours);
+            }
+            double min = 0;
+            if(timeDiff.TotalMinutes >= 0)
+            {
+                min = Math.Truncate(timeDiff.TotalMinutes);
+            }
+            timeText.text = hour.ToString() + "시간 " + min.ToString() + "분";
+            rewardText.text = textChangeManager.CurrencyString(num);
+            RewardPop.gameObject.SetActive(true);
+        }
+    }

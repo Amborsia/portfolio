@@ -1,0 +1,24 @@
+// 동물들의 움직임을 좌표를 설정해서 그 안에서만 돌아다닐 수 있게끔 만든 코드
+
+ private void Start()
+    {
+        waitTime = startWaitTime;
+        moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+    }
+
+    private void Update()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
+
+        if(Vector2.Distance(transform.position, moveSpot.position) < 0.2)
+        {
+            if(waitTime <= 0)
+            {
+                moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+                waitTime = startWaitTime;
+            }
+            else
+            {
+                waitTime -= Time.deltaTime;
+            }
+        }
