@@ -109,7 +109,7 @@ https://github.com/Amborsia/portfolio/tree/main/Idle_Game
 
 ---
 
-## 엔테크서비스
+## 네이버 엔테크서비스
 
 2021.12 ~ 2023.02
 
