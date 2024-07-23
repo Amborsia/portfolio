@@ -5,7 +5,7 @@
 <img src="https://github.com/user-attachments/assets/8d75f532-e144-4799-8c02-c08e14cac790" alt="Project Image" width="650px" height="800px">
 
 ## 프로젝트의 개요
-- 개발 기간 : 2024.06 ~ 2024.07 (5주) [link](https://github.com/Amborsia/egg-signal-server)
+- 개발 기간 : 2024.06 ~ 2024.07 (5주) [소스코드 link](https://github.com/Amborsia/egg-signal-server)
 - 팀장으로 프로젝트 진행, 백엔드 4명, 프론트엔드 2명
 ## 프로젝트의 간단한 소개
 - 아바타와 아이스 브레이킹과 함께하는 3:3 소개팅 서비스는 실시간 화상 채팅과 다양한 인터렉티브 기능을 제공하여 사용자들이 재미있고 자연스럽게 소통할 수 있는 온라인 소개팅 플랫폼입니다.
