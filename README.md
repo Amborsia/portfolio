@@ -21,6 +21,8 @@ blog : https://blog.naver.com/ghdrms1220
 
 github : https://github.com/Amborsia
 
+notion : https://www.notion.so/7eb05592b3024b6fa74a0bf87d62bdcb
+
 # Skills
 
 ---
