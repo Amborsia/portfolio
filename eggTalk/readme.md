@@ -5,7 +5,8 @@
 
 # 프로젝트 소개 (Project Introduction)
 
-![최종](https://github.com/user-attachments/assets/8d75f532-e144-4799-8c02-c08e14cac790)
+
+<img src="https://github.com/user-attachments/assets/8d75f532-e144-4799-8c02-c08e14cac790" alt="Project Image" width="650px" height="800px">
 
 ## 프로젝트의 개요
 - 개발 기간 : 2024.06 ~ 2024.07 (5주) [link](https://github.com/Amborsia/egg-signal-server)
