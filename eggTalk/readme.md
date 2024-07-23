@@ -1,7 +1,3 @@
-표지 및 목차 (Cover & Table of Contents)
-
-
-
 
 # 프로젝트 소개 (Project Introduction)
 
