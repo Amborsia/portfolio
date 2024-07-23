@@ -24,13 +24,17 @@
 
 ### 코드 유지 보수성 향상
 기존 monolithic 아키텍처로 인해 코드 가독성과 유지 보수성이 저하되는 문제가 있었습니다. 서비스를 여러 개의 독립적인 서비스로 분리하고, 중복 코드를 제거하며, DI(Dependency Injection)를 통한 리팩토링을 진행했습니다. 그 결과, 코드의 가독성과 유지 보수성이 크게 향상되어 개발 생산성이 높아졌습니다.
-코드 유지 보수성 향상 이전
 
-![image](https://github.com/user-attachments/assets/003bb190-d872-4339-be70-fb3dd4bacc74)
-
-코드 유지 보수성 향상 이후
-
-![image](https://github.com/user-attachments/assets/71c91462-3beb-4175-83d4-29801804f281)
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/003bb190-d872-4339-be70-fb3dd4bacc74" alt="Before Image" width="300px"></td>
+    <td><img src="https://github.com/user-attachments/assets/71c91462-3beb-4175-83d4-29801804f281" alt="After Image" width="300px"></td>
+  </tr>
+  <tr>
+    <td>Before</td>
+    <td>After</td>
+  </tr>
+</table>
 
 ### 사용자 인터랙션 기능 추가
 사용자가 적극적으로 참여할 수 있는 인터랙션 기능이 부족하여 사용자 만족도가 저하되는 문제가 있었습니다. 이를 해결하기 위해 키워드 게임, 큐피드 타임 등 다양한 인터랙티브 기능을 추가하고, Socket.IO를 사용해 실시간 상호작용을 관리했습니다. 이러한 추가 기능을 통해 사용자의 참여도와 만족도가 크게 향상되었습니다.
@@ -38,7 +42,7 @@
 ### 팀원 간 소통 개선
 프로젝트 진행 상황을 실시간으로 파악하기 어려워 팀원 간의 소통 부족 문제가 발생했습니다. 팀장으로서 매일 아침 회의를 주최하고, Github Project와 Discord를 활용해 프로젝트 관리 및 팀 내 소통을 원활하게 진행했습니다. 그 결과, 팀원 간의 소통이 원활해지고, 프로젝트 진행 상황을 실시간으로 파악하여 효율적으로 업무를 진행할 수 있게 되었습니다.
 
-![image](https://github.com/user-attachments/assets/6556d51a-0224-45ab-b668-cb349b8a6266)
+<img src="https://github.com/user-attachments/assets/6556d51a-0224-45ab-b668-cb349b8a6266" alt="Project Image" width="500px" height="300px">
 
 ## 개발 중 직면했던 도전 과제와 그에 대한 해결책
 처음에는 1:1 소개팅으로 기획되어 남녀 두 명이 입장하기를 누르면 대기 큐에서 남녀 한 명씩 선택해서 매칭하는 구조였습니다. 그러나 기획이 변경되어 남녀 대기열을 분리하고 6명을 매칭해야 하는 상황이 되었습니다. 이 과정에서 남자와 여자 대기열을 분리한 뒤 남자 3명, 여자 3명이 되면 대기열을 비우고 소개팅을 진행하게 했습니다.
