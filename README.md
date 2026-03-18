@@ -16,7 +16,7 @@ Blog : https://blog.naver.com/ghdrms1220
 
 GitHub : https://github.com/Amborsia
 
-Notion : https://www.notion.so/7eb05592b3024b6fa74a0bf87d62bdcb
+Notion : https://pointed-leek-13a.notion.site/24a8979b0a4e802b9ecada18f7ac7e4d?pvs=74
 
 # Skills
 ### Backend
