@@ -1,241 +1,120 @@
-# portfolio
 
-### 안녕하세요. 백엔드 개발자 남홍근 입니다.
-
+# Portfolio
 ![이력서사진](https://github.com/user-attachments/assets/8b70ca72-2f95-4839-945f-04c6ce83a95f)
 
+안녕하세요. 데이터 기반의 가치를 창출하는 백엔드 개발자 남홍근입니다.
+문과 전공자로 시작해 게임 클라이언트 개발에 대한 열정으로 입문하여 3년 동안 실무 경험을 쌓아왔습니다. 비전공자라는 배경을 성장을 위한 동력으로 삼아 자기 학습과 다양한 프로젝트를 통해 기술 역량을 확장해왔습니다.
 
-문과 전공자지만 게임 클라이언트 개발에 대한 열정으로 입문했고, 꾸준히 노력한 결과 3년 동안 개발 경험을 쌓아 올 수 있었던 남홍근입니다. 비전공자라는 한계를 느끼기도 했지만 자기 학습과 프로젝트 경험을 바탕으로 기술 역량을 키워왔습니다. 이 과정에서 클라이언트와 서버 간의 효율적인 통신의 중요함을 깨닫고, 백엔드 개발에 관해 관심을 갖게 되었습니다. 
+특히 클라이언트 개발 과정에서 서버 시스템 설계와 효율적인 통신의 중요성을 체감하며 백엔드 개발로 영역을 넓혔습니다. Pintos와 에그톡 프로젝트를 거쳐 최근 아이브릭스에서 대규모 검색 시스템 고도화와 AI(RAG) 연동 업무를 수행하며, 안정적이고 확장 가능한 시스템 구축에 강점을 갖게 되었습니다. 사용자의 요구사항을 기술적으로 완벽히 뒷받침하며 세상에 기여하는 시스템을 만들어 나가고 싶습니다.
 
-Pintos와 최근 진행한 프로젝트인 에그톡과 같은 프로젝트를 진행하며, 서버 시스템 설계와 구현에 큰 흥미를 느끼게 되었습니다. 이러한 경험을 바탕으로 백엔드 개발자로서 안정적이고 확장 가능하고 세상에 큰 기여를 할 수 있는 시스템을 구축해 나가고 싶습니다. 
+# Contact & Channel
+Email : ghdrms1220@naver.com
 
----
+Number : 010-3254-5455
 
-## Contact & Channel
+Blog : https://blog.naver.com/ghdrms1220
 
-email : ghdrms1220@naver.com
+GitHub : https://github.com/Amborsia
 
-number : 010-3254-5455
-
-blog : https://blog.naver.com/ghdrms1220
-
-github : https://github.com/Amborsia
-
-notion : https://www.notion.so/7eb05592b3024b6fa74a0bf87d62bdcb
+Notion : https://www.notion.so/7eb05592b3024b6fa74a0bf87d62bdcb
 
 # Skills
+### Backend
+Languages & Frameworks: Node.js, TypeScript, Nest.js, Python, C#, C, Express.js, LangChain
 
----
+Search & DB: Elasticsearch, Redis, MongoDB, Oracle, Vector DB
 
-## Backend
+API & Logic: REST API, Socket.IO, RAG(Retrieval-Augmented Generation)
 
-- **Languages & Frameworks**: Node.js, TypeScript, Express.js, Nest.js, C#, C, Python
-- **Databases**: MongoDB, Redis
-- **Real-time Communication**: Socket.IO
-- **Tools**: Git, Visual Studio Code, XCode
+### DevOps & Data Pipeline
+Data Pipeline: Apache NiFi
 
-## DevOps
+Monitoring: Prometheus, Grafana, Kibana
 
-- **Cloud Services**: AWS EC2, S3
-- **CI/CD**: Jenkins
+Cloud & Infra: AWS EC2, S3, Docker, Redhat, Azure AI
 
-## Collaboration
-
-- **Project Management**: Trello, Jira, GitHub Projects
-- **Documentation**: Notion, Swagger, Postman
-- **Version Control**: Git, GitHub
+### Collaboration
+Tools: Git, GitHub, Jenkins, Jira, Slack, Notion, Swagger
 
 # Projects
+## 아이브릭스 (i-bricks)
+백엔드 및 검색 엔지니어 | 2024.11 - 2025.12
+### 지능형 RAG 기반 AI 서비스 구축
 
----
+Azure OpenAI API 연동 및 RAG 파이프라인 설계 (OpenAI, Gemini, Ollama 멀티 모델 대응)
 
-## 에그톡
+사내 KMS 데이터를 활용한 Vector DB 구축 및 시맨틱 검색 기반 답변 생성 로직 구현
 
-### 팀장
+Docker 기반 AI 서빙 환경 구축 및 Redhat 환경 내 Azure 서비스 연동 아키텍처 설계
 
-2024.06 ~ 2024.07
+### 검색 엔진 고도화 및 성능 최적화
 
-https://github.com/Amborsia/portfolio/blob/main/eggTalk/readme.md
+Elasticsearch 7.x 기반 multi_match 및 nested 쿼리 최적화로 검색 정확도 15% 향상
 
-**아바타와 아이스 브레이킹과 함께하는 3:3 소개팅 서비스**
+필드 매핑 세분화(kobrick, ngram 등)를 통해 불필요한 검색 결과 노출 23% 감소
 
-- OpenVidu를 활용한 화상 채팅 서비스 기능 구현
-    - 실시간 스트리밍 및 다자간 화상 채팅 기능을 효율적으로 처리하기 위해 OpenVidu의 세션 및 토큰 관리를 효과적으로 사용
-- 남녀 큐 분리 및 최적화
-    - 사용자 경험을 극대화 하기 위한 남녀 3:3 매칭 큐 작업
-    - 친구 매칭 방지 알고리즘을 만들어 참가자 간의 불편함 최소화
-    - Redis 및 cache-manager를 사용하여 큐 매칭 시스템 상 메모리를 효율적으로 처리
-- 메인 컨텐츠 개발
-    - 키워드 게임, 큐피드 타임 등 사용자의 참여도와 만족도를 높이기 위한 사용자 인터렉션을 유도하는 다양한 기능 추가
-    - Socket.IO를 활용하여 실시간으로 사용자 간의 상호작용을 관리하고, 게임 진행 상황을 타이머를 통해 실시간으로 업데이트
-- 코드 리팩토링 및 성능 최적화
-    - 기존의 monolithic 서비스를 여러개의 독립적인 서비스로 분리하여 코드 가독성과 유지 보수성을 향상.
-    - 중복 코드를 제거하고, DI에 따른 리팩토링 진행. 각 모듈 간의 의존성을 줄여 시스템의 안정성을 강화
-- 성능 최적화 작업
-    - Redis를 활용한 캐싱 전략 도입으로 데이터베이스 부하를 줄이고 응답 속도를 개선. 대기열 및 매칭 데이터의 빠른 조회와 업데이트를 진행함.
-- 팀 리더십 및 협업 관리
-    - 팀장으로서 매일 아침 10시 회의를 주최하고 팀의 목표를 상의하며 프로젝트 진행 상황을 모니터링. 백엔드와 프런트엔드간의 원활한 소통을 제시함.
-    - 개개인의 강점을 파악하여 각 팀원의 역량을 최대한 발휘할 수 있는 업무를 분배. Github Project와 Discord를 활용하여 팀 내 프로젝트 관리 및 원활한 커뮤니케이션 작업 완료.
+Trie 자료구조 기반 텍스트 탐색 로직 및 전역 LRU 캐시 도입으로 평균 RPS 2.7배 향상 (4,178 -> 14,217)
 
-## 동물키우기
+### 데이터 파이프라인 및 운영 표준화
 
-개인프로젝트
+Apache NiFi 기반 대규모 상담 로그 수집, 전처리, 자동 분류 파이프라인 구축 및 리팩토링
 
-2023.10 ~ 2023.11
+현대백화점 폐쇄망 환경 내 ES, Redis, NiFi 등 솔루션 설치 및 장애 대응 표준 프로세스(SOP) 문서화
 
-https://github.com/Amborsia/portfolio/tree/main/Idle_Game
+Git 기반 배포 자동화 및 최신 인덱스 동적 조회 기능 구현
 
-- **백엔드 및 광고 설정**
-    - **Firebase 설정:** 데이터베이스, 인증, 분석 기능 구현.
-    - **AdMob 설정:** 광고 설정 및 수익화 작업 수행.
-    - **GPGS 설정:** Google Play Games Services를 설정하여 게임 서비스 기능 추가 (출시 예정).
-- **게임 관리 및 데이터 처리**
-    - **GameManager 인스턴스화:** 게임의 핵심 로직과 상태 관리.
-    - **엑셀 파싱 작업:** Excel 파일을 파싱하여 데이터 관리 및 업데이트 자동화, 데이터 수정 및 관리의 효율성 증대.
-- **UI/UX 개발**
-    - **UGUI 사용:** Unity의 UGUI를 사용하여 사용자 인터페이스(UI) 설계 및 구현.
-    - **Canvas 관리:** Canvas에 다양한 이미지 요소들을 통합하여 효율적인 UI 구성.
-    - **오프라인 시간 보상 설정:** 오프라인 상태에서도 시간 보상 기능을 설정하여 사용자 경험 개선.
-- **리소스 최적화**
-    - **프리팹 활용:** 프리팹을 통해 리소스를 재활용하고 게임의 성능 최적화.
+## 에그톡 (EggTalk)
+팀장 (SW 사관학교 정글) | 2024.06 - 2024.07
+### 비동기 경합 상태 해결 및 매칭 시스템 최적화
 
-**성과:**
+동시 접속 시 정원(6명)을 초과하여 입장하는 Race Condition 문제를 대기열 구조 개선을 통해 해결
 
-- 효율적인 데이터 관리와 수정 가능성을 높여 유지보수 용이성 확보.
-- 광고 수익화 및 게임 서비스 기능 도입으로 프로젝트 완성도 향상.
-- UI/UX 설계를 통해 사용자 친화적인 인터페이스 구현.
+시작 대기열 단계 추가 및 핵심 로직에 await를 활용한 순차 처리 보장으로 데이터 정합성 확보
 
-# Career
+### 실시간 통신 및 메인 콘텐츠 개발
 
----
+OpenVidu를 활용한 다자간 화상 채팅 세션 및 토큰 관리 로직 구현
 
-## 네이버 엔테크서비스
+Socket.IO 기반 실시간 상호작용 관리 및 타이머 동기화 시스템 구축
 
-2021.12 ~ 2023.02
+Redis 및 cache-manager를 활용해 대기열 데이터의 빠른 조회와 메모리 처리 효율성 증대
 
-## 쥬니버스쿨 
-[실제링크](https://play.google.com/store/apps/details?id=com.nts.edu4k&hl=ko)
+# Other Career
+## 네이버 엔테크서비스 | 2021.12 - 2023.02
+쥬니버스쿨 콘텐츠 개발: Unity 활용 주요 기능 설계 및 앱 내 콘텐츠 구현
 
-**유니티 사용 프로젝트**
+공통 모듈 개발: 여러 프로젝트에서 재사용 가능한 공통화 모듈 개발을 통해 코드 재사용률 50% 향상
 
-- 유니티 엔진을 활용하여 다양한 프로젝트 개발
-- 주요 기능 및 모듈 설계, 앱 내 컨텐츠 구현
+마이그레이션: 기존 모듈 시스템의 안정적인 데이터 및 서비스 마이그레이션 수행
 
-**공통화 모듈 개발 및 수정**
+인프라 활용: Git 및 Jenkins를 활용한 CI/CD 파이프라인 운영 및 라이브 환경 배포 경험
 
-- 여러 프로젝트에서 사용할 수 있는 공통 모듈 개발 및 수정
-- 성능 개선 및 버그 수정 작업을 통해 모듈의 효율성 및 안정성 향상
+## 플레로게임즈 (에브리타운) | 2021.05 - 2021.11
+콘텐츠 업데이트: SNG 게임 내 이벤트 시스템 고도화로 사용자 참여도 25% 증가 및 버그 수정
 
-**프로젝트 마이그레이션 작업**
+멀티 플랫폼 빌드: Xcode 및 Android Studio를 활용한 iOS/AOS 빌드 및 배포 관리
 
-- 기존 모듈 시스템에서 새로운 모듈 시스템으로 데이터 및 서비스 마이그레이션 수행
-- 마이그레이션 과정에서 데이터 무결성과 시스템 안정성을 유지하며 성능 향상
+기술 활용: Cocos2d 및 Lua 기반의 게임 엔진 최적화 및 유지보수
 
-**Git 및 Jenkins 사용 및 라이브 경험**
+## 원컴즈 (아이러브 파스타) | 2020.09 - 2021.03
+프레임워크 작업: 디자인 툴 수정 및 UI/UX 개선을 위한 내부 프레임워크 리팩토링
 
-- Git을 사용한 버전 관리 및 협업 환경 구축
-- Jenkins를 활용한 CI/CD 파이프라인 설계 및 구현
-- 라이브 환경에서의 배포 및 유지보수 경험
+SDK 연동: 안드로이드 스튜디오 기반 각종 SDK 작업 및 어플리케이션 라이브 관리
 
-## 플레로게임즈
+## 피비컴 (S&G 게임) | 2019.12 - 2020.09
+시스템 구현: TCP/IP 서버 통신, 랭킹 시스템, 글로벌 다국어 지원 기능 개발
 
-2021.05 ~ 2021.11
+SDK 통합: Google/Firebase/Facebook/IronSource 등 5개 이상의 외부 SDK 연동
 
-## 에브리타운 
-[실제링크](https://play.google.com/store/apps/details?id=kr.co.feverstudio.apps.everytown&hl=ko)
-
-- **컨텐츠 업데이트**
-    - SNG 게임 내 이벤트 작업 및 신규 컨텐츠 추가
-    - 게임 내 버그 수정 및 안정성 향상 작업 수행
-- **iOS 및 AOS 빌드**
-    - iOS 및 Android(AOS) 빌드 진행 및 배포
-    - Xcode를 사용한 iOS 빌드 작업
-- **기술 사용**
-    - Cocos2d 및 Lua를 활용한 게임 개발 및 업데이트
-
-## 원컴즈
-
-2020.09 ~ 2021.03
-
-## 아이러브 파스타
-[실제링크](https://play.google.com/store/apps/details?id=com.patigames.ilovepasta4kakao&hl=ko)
-
-**Lua 및 Cocos2d 사용**
-
-- Lua와 Cocos2d를 활용한 게임 개발 및 업데이트
-- 게임 내 다양한 기능 구현 및 성능 최적화
-
-**안드로이드 스튜디오를 통한 SDK 작업 및 어플 관리**
-
-- 안드로이드 스튜디오를 사용하여 SDK 작업 및 어플리케이션 관리
-- 어플리케이션의 업데이트 및 유지보수 수행
-
-**프레임워크 작업(디자인툴 수정)**
-
-- 디자인 툴 수정 및 프레임워크 작업
-- UI/UX 개선을 위한 디자인 변경 및 구현
-
-**SNG 게임 컨텐츠 업데이트**
-
-- SNG 게임의 신규 컨텐츠 추가 및 이벤트 작업
-- 버그 수정 및 게임 안정성 향상
-
-**AOS 빌드**
-
-- Android 운영체제(AOS) 빌드 작업
-- 빌드 및 배포 프로세스 관리
-
-**리팩토링 작업 진행**
-
-- 코드 리팩토링을 통해 기존 코드의 가독성 및 유지보수성 개선
-- 성능 최적화 및 버그 수정
-
-## 피비컴
-
-2019.12 ~ 2020.09
-
-## S&G게임
-[실제링크](https://play.google.com/store/apps/details?id=com.sng.SNG1&hl=ko)
-
-**게임 개발**
-
-- 미니게임 5개 개발
-- 랭킹 시스템 구현
-- TCP/IP 서버 통신 구현
-- 출석 시스템 및 프로필 기능 구현
-- 글로벌 작업 수행 (다국어 지원, 글로벌 서버 연동 등)
-
-**SDK 작업**
-
-- Google SDK 작업 및 적용
-- Firebase 통합 및 활용
-- Google Play Games Services(GPGS) 적용
-- Facebook SDK 작업 및 연동
-- IronSource 광고 네트워크 통합
-
-**GitFlow 사용 및 Jenkins 구축 및 사용**
-
-- GitFlow를 활용한 효율적인 버전 관리 및 협업
-- Jenkins 구축 및 CI/CD 파이프라인 설정
-- Jenkins를 통한 10회 이상의 업데이트 적용 및 관리
+자동화 도입: Jenkins 구축 및 GitFlow 도입으로 배포 주기 20% 단축
 
 # Education
+## SW 사관학교 정글 | 2024.03 - 2024.07
+카이스트 주관 개발자 양성 교육 수료
 
----
+전산학(OS, 네트워크, 자료구조 등) 기반의 심화 과제 및 프로젝트 팀장 역임
 
-## SW 사관학교 정글
+## 한림대학교 | 2016.03 - 2020.02
+국어국문과 / 4차산업혁명전공 복수 전공
 
-2024.03 ~ 2024.07
-
-- 카이스트 주관 개발자 양성 교육 과정
-    - 실무 수준의 과제 수행을 통해 백엔드 개발자 포지션 적합성 및 실무 투입 역량 확보
-    - 카이스트 수준의 전산학 공부와 프로젝트를 통해 백엔드 개발자로서 적합성과 실무 역량 확보
-    - 프로젝트 중심 교육
-    - 마지막 프로젝트 팀장으로 참여
-
-## 한림대학교
-
-2016.03 ~ 2020.02
-
-- 국어국문과 / 4차산업혁명전공 복수 전공
-- 4년제 학사 졸업 (3.85 / 4.5)
+4년제 학사 졸업 (평점 3.85 / 4.5)
